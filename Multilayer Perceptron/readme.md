@@ -7,14 +7,17 @@ The MLP is used to learn a mapping from input some letters (of given block size)
 ## Part 1
 
 In part 1 , I started with embedding size of 2 for each letter , the neural network consists of only 2 layers ,
-initially I used a model of 13 thousand parameters. After that i increased the embedding size from 2 to 10
-To find out the best learning rate , plot of loss vs the exponent of learning rate
+initially I used a model of 13 thousand parameters. After that i increased the embedding size from 2 to 10 .
+To find out the best learning rate , plot of loss vs the exponent of learning rate .
+
 As you can see i found out that best learning rate would be somewhere near -1 exponent(0.1) 
+
 ![loss vs exponent of learning rate](https://user-images.githubusercontent.com/102567732/227607681-966f4459-0538-4fa4-a9cc-d950a959827c.png)
 
-
 ### Here is the visualisation of the "Letter Embeddings "
+
 ![mlp part1](https://user-images.githubusercontent.com/102567732/227604486-6bc2ecd9-36a6-42d6-8782-59c64eab2033.png)
+
 #### You can see that  q is a outlier because it does not appear often in names and "." character is also away
 
 #### Train Loss -> 2.1846
