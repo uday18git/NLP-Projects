@@ -30,7 +30,7 @@ As you can see i found out that best learning rate would be somewhere near -1 ex
 4. shreety.
    Not bad but can be better.
 
-##Part 2
+## Part 2
 
 In part 2 , I experimented more with the word embeddings and increased the number of parameters significantly to try to minimize the loss
 Model was of 30000 parameters approximately .
