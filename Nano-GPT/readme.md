@@ -48,4 +48,3 @@ The model is composed of an encoder and a decoder, each consisting of a stack of
 Each layer of the encoder and decoder contains two sub-layers: a multi-head self-attention mechanism and a feed-forward network.
 The multi-head self-attention mechanism computes a weighted sum of the input sequence, where the weights are determined by the similarities between each pair of input tokens. 
 This allows the model to capture long-range dependencies between different parts of the sequence.
-![transformer](https://user-images.githubusercontent.com/102567732/229882013-df299348-02c3-4e07-b0b1-109289f3b87d.png)
