@@ -9,44 +9,15 @@ It is commonly used in convolutional neural networks (CNNs) and has been shown t
 * To fix initialisation we removed the bias from last layer and reduced the weights magnitude (*0.01)
 * Here all characters(we have 27 in this model) should have same probability at initialisation so expected loss will be -torch.tensor(1/27.0).log()  ->  (3.2958)
 
-#### Loss when initialisation was bad ->
-
-![bad initialisation](https://user-images.githubusercontent.com/102567732/229861108-39d5537e-1ce3-47f0-89f5-a879f968a5a9.png)
-
-#### Loss after fixing initialisation ->
-
-![after fixing initialisation](https://user-images.githubusercontent.com/102567732/229861226-ce384b95-d77c-4a0b-a197-3fbc5b1ad151.png)
-
-* Now we see that the hockey stick appearance of loss is not there because we initialised well 
-* This helps because the more training time will be given to improve the model rather than shrinking it
-
 ### Fixing the saturation of tanh layer 
 * We see that tanh is too saturated and most values are -1 and 1 which is bad for training because the slope is inf there and the model does not learn .
 * As derivative of tanh is (1- t^2)x(out.grad) at 1 and -1 this becomes 0 ,so  no matter how much you change the gradient model will not learn
-![tanh saturation](https://user-images.githubusercontent.com/102567732/229862234-5e94a01b-d766-4865-9fa9-fcd4b8dddb76.png)
-* We fix this by reducing weights by a factor off 100 , results in a very stable tanh with almost no saturation
-![tanh after fixing](https://user-images.githubusercontent.com/102567732/229862530-5ffdda15-1ce4-4eb3-b89b-2975210602db.png)
 
-### Adding batchnorm 
-### Loss Log ->
-#### LOSS WHEN INITIALISATION WAS BAD
-* TRAIN ->  2.2308623790740967
-* VAL -> 2.249389886856079
-#### LOSS WHEN INITIALISATION WAS GOOD
-* TRAIN -> 2.117876768112182
-* VAL -> 2.157973527908325
-#### LOSS WHEN WE FIXED TANH LAYER BEING TOO SATURATED AT INIT
-* TRAIN ->2.0703351497650146
-* VAL -> 2.11810302734375
-#### LOSS WHEN WE FIXED TANH ACCORDING TO THE PAPER
-* TRAIN ->2.026627540588379
-* VAL -> 2.106279134750366
-#### LOSS USING BATCH NORM
-* TRAIN -> 2.0443265438079834 ,not expecting improvement
-* VAL -> 2.095064401626587
-#### LOSS USING BNMEAN RUNNING AND BNSTD RUNNING
-* TRAIN -> 2.0435707569122314 ,expecting similar results as above
-* VAL -> 2.0435707569122314
+![tanh saturation](https://user-images.githubusercontent.com/102567732/229862234-5e94a01b-d766-4865-9fa9-fcd4b8dddb76.png)
+
+* We fix this by reducing weights by a factor off 100 , results in a very stable tanh with almost no saturation
+
+![tanh after fixing](https://user-images.githubusercontent.com/102567732/229862530-5ffdda15-1ce4-4eb3-b89b-2975210602db.png)
 
 ## Analsying activations distribution , gradient distributions and update to data ratio distributions
 ### Activation distributions
@@ -87,3 +58,35 @@ The black line shows us where it should be.. if they are below black line it mea
 ### When using batchnorm ->
 
 ![update to data ratio 2](https://user-images.githubusercontent.com/102567732/229872220-b0002425-3bc7-49ff-a75d-ad5a35452f4d.png)
+
+
+### Loss Log ->
+#### Loss when initialisation was bad ->
+
+![bad initialisation](https://user-images.githubusercontent.com/102567732/229861108-39d5537e-1ce3-47f0-89f5-a879f968a5a9.png)
+
+#### Loss after fixing initialisation ->
+
+![after fixing initialisation](https://user-images.githubusercontent.com/102567732/229861226-ce384b95-d77c-4a0b-a197-3fbc5b1ad151.png)
+
+* Now we see that the hockey stick appearance of loss is not there because we initialised well 
+* This helps because the more training time will be given to improve the model rather than shrinking 
+
+#### LOSS WHEN INITIALISATION WAS BAD
+* TRAIN ->  2.2308623790740967
+* VAL -> 2.249389886856079
+#### LOSS WHEN INITIALISATION WAS GOOD
+* TRAIN -> 2.117876768112182
+* VAL -> 2.157973527908325
+#### LOSS WHEN WE FIXED TANH LAYER BEING TOO SATURATED AT INIT
+* TRAIN ->2.0703351497650146
+* VAL -> 2.11810302734375
+#### LOSS WHEN WE FIXED TANH ACCORDING TO THE PAPER
+* TRAIN ->2.026627540588379
+* VAL -> 2.106279134750366
+#### LOSS USING BATCH NORM
+* TRAIN -> 2.0443265438079834 ,not expecting improvement
+* VAL -> 2.095064401626587
+#### LOSS USING BNMEAN RUNNING AND BNSTD RUNNING
+* TRAIN -> 2.0435707569122314 ,expecting similar results as above
+* VAL -> 2.0435707569122314
