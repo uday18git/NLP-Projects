@@ -28,7 +28,8 @@ As you can see i found out that best learning rate would be somewhere near -1 ex
 2. amelle.
 3. khiim.
 4. shreety.
-   Not bad but can be better.
+
+##### Not bad but can be better.
 
 ## Part 2
 
@@ -43,5 +44,6 @@ After several attempts loss decreased
 2. quinn
 3. kaleigh
 4. dellynn
-Definitely unique and better names than previous... 
+
+##### Definitely unique and better names than previous... 
 
