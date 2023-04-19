@@ -40,6 +40,11 @@ We start from a bigram model then we make the following changes ->
 * train loss -> 1.4780
 * val loss -> 1.4876
 
+## Final loss and prediction
+
+![results](https://user-images.githubusercontent.com/102567732/233098422-ae685261-62c3-40cc-96cd-c547ce38eb1b.png)
+
+
 ## About transformer architecture
 The transformer architecture is a type of neural network that has revolutionized the field of natural language processing (NLP) by improving the performance of language models on a wide range of tasks.
 The architecture was introduced in the paper "Attention Is All You Need" by Vaswani et al. in 2017.
