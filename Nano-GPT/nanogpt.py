@@ -3,8 +3,8 @@ import torch.nn as nn
 from torch.nn import functional as F
 
 # hyperparameters
-batch_size = 64 # how many independent sequences will we process in parallel?
-block_size = 256 # what is the maximum context length for predictions?
+batch_size = 32 #64 # how many independent sequences will we process in parallel?
+block_size = 128#256 # what is the maximum context length for predictions?
 max_iters = 5000
 eval_interval = 500
 learning_rate = 3e-4
@@ -233,4 +233,4 @@ print(decode(m.generate(context, max_new_tokens=500)[0].tolist()))
 # we use xvar= x.var(dim=1, keepdim=True) we normalize the rows
 # in paper we see that the layer norm is applied before the feed forward and after the multi head attention but we are applying it after the feed forward and before the multi head attention it is nowadays common to do so.
 # after adding layer norm train loss ->1.9883 val loss -> 2.0828 idk why
-# we reach 1.4 train loss and val loss when trained after scaling the model
+# we reach 1.2614 train loss and 1.5291 val loss when trained after scaling the model
